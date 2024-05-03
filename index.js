@@ -41,6 +41,14 @@ app.use('/', function (clientRequest, clientResponse) {
          body = body.replace(`class="dorik-branding"`, `style="display:none;"`);
          body = body.replace(`class='dorik-branding'`, `style="display:none;"`);
 
+         serverResponse.headers['cache-control'] = 'max-age=604800';
+         delete serverResponse.headers['cf-cache-status'];
+         delete serverResponse.headers['cf-ray'];
+         delete serverResponse.headers['nel'];
+         delete serverResponse.headers['report-to'];
+         delete serverResponse.headers['server'];
+         delete serverResponse.headers['strict-transport-security'];
+
         clientResponse.writeHead(serverResponse.statusCode, serverResponse.headers);
         clientResponse.end(body);
       });
