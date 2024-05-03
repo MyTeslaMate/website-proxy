@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require('express');
 
 const app = express();
@@ -9,7 +8,6 @@ const targetUrl = process.env.TARGET_URL || 'https://www.google.com'; // Run loc
 
 const proxyServerPort = process.env.PROXY_SERVER_PORT || 8080;
 
-// eslint-disable-next-line max-lines-per-function
 app.use('/', function (clientRequest, clientResponse) {
   const parsedHost = targetUrl.split('/').splice(2).splice(0, 1).join('/');
   let parsedPort;
