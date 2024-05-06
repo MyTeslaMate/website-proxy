@@ -25,7 +25,7 @@ app.use('/', function (clientRequest, clientResponse) {
     path: clientRequest.url,
     method: clientRequest.method,
     headers: {
-      'User-Agent': clientRequest.headers['user-agent'],
+      'User-Agent': clientRequest.headers['user-agent'] || 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_2_4; en-US) AppleWebKit/535.22 (KHTML, like Gecko) Chrome/51.0.3923.323 Safari/534'
     },
   };
 
