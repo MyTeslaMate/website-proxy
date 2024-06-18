@@ -40,6 +40,7 @@ app.use('/', function (clientRequest, clientResponse) {
         // Make changes to HTML files when they're done being read.
          body = body.replace(`class="dorik-branding"`, `style="display:none;"`);
          body = body.replace(`class='dorik-branding'`, `style="display:none;"`);
+         body = body.replace(`https://myteslamatecom.dorik.io`, `https://www.myteslamate.com`);
 
          serverResponse.headers['cache-control'] = 'max-age=604800';
          delete serverResponse.headers['cf-cache-status'];
