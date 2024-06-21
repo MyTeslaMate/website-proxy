@@ -50,6 +50,7 @@ app.use('/', function (clientRequest, clientResponse) {
          delete serverResponse.headers['report-to'];
          delete serverResponse.headers['server'];
          delete serverResponse.headers['strict-transport-security'];
+         delete serverResponse.headers['x-robots-tag'];
 
         clientResponse.writeHead(serverResponse.statusCode, serverResponse.headers);
         clientResponse.end(body);
