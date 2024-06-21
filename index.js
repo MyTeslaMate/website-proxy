@@ -31,7 +31,10 @@ app.use('/', function (clientRequest, clientResponse) {
 
   const serverRequest = parsedSSL.request(options, function (serverResponse) {
     let body = '';
-    if (String(serverResponse.headers['content-type']).indexOf('text/html') !== -1) {
+    if (
+      String(serverResponse.headers['content-type']).indexOf('text/html') !== -1 ||
+      String(serverResponse.headers['content-type']).indexOf('text/xml') !== -1
+  ) {
       serverResponse.on('data', function (chunk) {
         body += chunk;
       });
@@ -40,8 +43,7 @@ app.use('/', function (clientRequest, clientResponse) {
         // Make changes to HTML files when they're done being read.
          body = body.replace(`class="dorik-branding"`, `style="display:none;"`);
          body = body.replace(`class='dorik-branding'`, `style="display:none;"`);
-         body = body.replace(`https://mtm.dorik.io`, `https://www.myteslamate.com`);
-         body = body.replace(`https://mtm.dorik.io`, `https://www.myteslamate.com`);
+         body = body.replaceAll(targetUrl, `https://www.myteslamate.com`);
 
          serverResponse.headers['cache-control'] = 'max-age=604800';
          delete serverResponse.headers['cf-cache-status'];
